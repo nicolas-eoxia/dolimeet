@@ -285,6 +285,9 @@ AttendancePresentAuditRate           = Taux de présence aux audits
 AttendanceDelayAuditRate             = Taux de retard aux audits
 AttendanceAbsentAuditRate            = Taux d'absence aux audits
 
+# Financial and pedagogical report - Bilan pédagogique et financier
+TrainingOrganizationInfos = A. IDENTIFICATION DE L'ORGANISME DE FORMATION
+GeneralInfos              = B. INFORMATIONS GÉNÉRALES
 
 
 #
@@ -306,7 +309,7 @@ CompletionCertificateDocumentContent = Bonjour,<br /><br />Veuillez trouver en p
 #
 
 # Data - Donnée
-TrainingOrganizationNumber        = Numéro de déclaration de l\'organisme de formation
+TrainingOrganizationNumber        = Numéro de déclaration de l'organisme de formation
 TrainingOrganizationNumberTooltip = Renseignez ici votre numéro de déclaration si vous êtes reconnu comme organisme de formation
 SocietyAttendants                 = Tiers des participants externe
 DateAndTime                       = Date et horaire
