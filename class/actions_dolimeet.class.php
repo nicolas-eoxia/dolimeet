@@ -169,6 +169,10 @@ class ActionsDolimeet
         }
 
         if (strpos($parameters['context'], 'propalcard') !== false) {
+            $extrafields->attributes['propal']['label']['trainingsession_type']     = $picto . $langs->transnoentities($extrafields->attributes['propal']['label']['trainingsession_type']);
+            $extrafields->attributes['propal']['label']['trainingsession_service']  = $picto . $langs->transnoentities($extrafields->attributes['propal']['label']['trainingsession_service']);
+            $extrafields->attributes['propal']['label']['trainingsession_location'] = $picto . $langs->transnoentities($extrafields->attributes['propal']['label']['trainingsession_location']);
+
             if (empty(GETPOST('options_trainingsession_type', 'int'))) {
                 $extrafields->attributes['propal']['hidden']['trainingsession_service']  = 1;
                 $extrafields->attributes['propal']['hidden']['trainingsession_location'] = 1;
@@ -196,6 +200,10 @@ class ActionsDolimeet
         }
 
         if (strpos($parameters['context'], 'projectcard') !== false) {
+            $extrafields->attributes['projet']['label']['trainingsession_type']     = $picto . $langs->transnoentities($extrafields->attributes['projet']['label']['trainingsession_type']);
+            $extrafields->attributes['projet']['label']['trainingsession_service']  = $picto . $langs->transnoentities($extrafields->attributes['projet']['label']['trainingsession_service']);
+            $extrafields->attributes['projet']['label']['trainingsession_location'] = $picto . $langs->transnoentities($extrafields->attributes['projet']['label']['trainingsession_location']);
+
             // Hide extrafields for create mode
             if (empty(GETPOST('options_trainingsession_type', 'int'))) {
                 $extrafields->attributes['projet']['hidden']['trainingsession_service']  = 1;
@@ -387,6 +395,8 @@ class ActionsDolimeet
         if (strpos($parameters['context'], 'productcard')) {
             global $extrafields, $object;
 
+            $extrafields->attributes['product']['label']['syllabus'] = $picto . $langs->transnoentities($extrafields->attributes['product']['label']['syllabus']);
+
             if ($object->type == $object::TYPE_PRODUCT) {
                 $extrafields->attributes['product']['list']['syllabus'] = 0;
             }
@@ -509,7 +519,7 @@ class ActionsDolimeet
             $form      = new Form($db);
             $pictoPath = dol_buildpath('/dolimeet/img/dolimeet_color.png', 1);
             $picto     = img_picto('', $pictoPath, '', 1, 0, 0, '', 'pictoModule');
-            $trainingOrganizationNumberInput = '<input name="MAIN_INFO_SOCIETE_TRAINING_ORGANIZATION_NUMBER" id="MAIN_INFO_SOCIETE_TRAINING_ORGANIZATION_NUMBER" value="'. $conf->global->MAIN_INFO_SOCIETE_TRAINING_ORGANIZATION_NUMBER .'">';
+            $trainingOrganizationNumberInput = '<input name="MAIN_INFO_SOCIETE_TRAINING_ORGANIZATION_NUMBER" id="MAIN_INFO_SOCIETE_TRAINING_ORGANIZATION_NUMBER" value="' . getDolGlobalString('MAIN_INFO_SOCIETE_TRAINING_ORGANIZATION_NUMBER') . '">';
             ?>
             <script>
                 let trainingOrganizationNumberInput = $('<tr class="oddeven"><td><label for="training_organization_number"><?php print $picto . $form->textwithpicto($langs->trans('TrainingOrganizationNumber'), $langs->trans('TrainingOrganizationNumberTooltip'));?></label></td>');
