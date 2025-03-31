@@ -286,9 +286,10 @@ AttendanceDelayAuditRate             = Taux de retard aux audits
 AttendanceAbsentAuditRate            = Taux d'absence aux audits
 
 # Financial and pedagogical report - Bilan pédagogique et financier
-TrainingOrganizationInfos = A. IDENTIFICATION DE L'ORGANISME DE FORMATION
-GeneralInfos              = B. INFORMATIONS GÉNÉRALES
-
+TrainingOrganizationInfos                                      = A. IDENTIFICATION DE L'ORGANISME DE FORMATION
+GeneralInfos                                                   = B. INFORMATIONS GÉNÉRALES
+FinancialStatementExcludingTaxesOriginOfTheOrganizationsIncome = C. BILAN FINANCIER HORS TAXES : ORIGINE DES PRODUITS DE L’ORGANISME
+CompaniesForEmployeeTraining                                   = Entreprises pour la formation de leurs salariés
 
 #
 # Email - Email
