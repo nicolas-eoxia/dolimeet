@@ -130,8 +130,12 @@ if (empty($resHook)) {
 
     // Action clone object.
     if ($action == 'confirm_clone' && $confirm == 'yes') {
-        $options['label']      = GETPOST('clone_label');
-        $options['attendants'] = GETPOST('clone_attendants');
+        foreach ($_GET as $key => $val) {
+            if (strpos($key, 'clone_') !== false) {
+                $options[substr($key, 6)] = GETPOST($key);
+            }
+        }
+
         $result = $object->createFromClone($user, $object->id, $options);
         if ($result > 0) {
             header('Location: ' . $_SERVER['PHP_SELF'] . '?id=' . $result . '&object_type=' . $object->element);
@@ -443,7 +447,11 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
         // Define confirmation messages.
         $formQuestionClone = [
             ['type' => 'text',  'name' => 'clone_label',      'label' => $langs->trans('NewLabelForClone', $langs->transnoentities('The' . ucfirst($object->element))), 'value' => $object->label, 'size' => 24],
-            ['type' => 'radio', 'name' => 'clone_attendants', 'label' => $langs->trans('CloneAttendants'), 'values' => [0 => $langs->trans('Attendants'), 1 => $langs->trans('AttendantsFromContract'), 2 => $langs->trans('None')], 'default' => 0]
+            ['type' => 'radio', 'name' => 'clone_attendants', 'label' => $langs->trans('CloneAttendants'), 'values' => [0 => $langs->trans('Attendants'), 1 => $langs->trans('AttendantsFromContract'), 2 => $langs->trans('None')], 'default' => 0],
+            ['type' => 'separator'],
+            ['type' => 'datetime', 'name' => 'clone_datestart', 'label' => $langs->trans('DateStart'), 'value' => $object->date_start],
+            ['type' => 'datetime', 'name' => 'clone_dateend',   'label' => $langs->trans('DateEnd'),   'value' => $object->date_end],
+            ['type' => 'other',                                 'label' => $langs->trans('Duration'),  'value' => $form->select_duration('clone_duration', $object->duration, 0, 'text', 0, 1)]
         ];
         $formConfirm .= $form->formconfirm($_SERVER['PHP_SELF'] . '?id=' . $object->id . '&object_type=' . $object->element, $langs->trans('CloneObject', $langs->transnoentities('The' . ucfirst($object->element))), $langs->trans('ConfirmCloneObject', $langs->transnoentities('The' . ucfirst($object->element)), $object->ref), 'confirm_clone', $formQuestionClone, 'yes', 'actionButtonClone', 350, 600);
     }

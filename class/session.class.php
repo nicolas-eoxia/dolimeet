@@ -503,6 +503,21 @@ class Session extends SaturneObject
                 $object->label = $options['label'];
             }
         }
+        if (!empty($options['date_start'])) {
+            if (property_exists($object, 'date_start')) {
+                $object->date_start = dol_mktime($options['datestarthour'], $options['datestartmin'], 0, $options['datestartmonth'], $options['datestartday'], $options['datestartyear']);
+            }
+        }
+        if (!empty($options['dateend'])) {
+            if (property_exists($object, 'date_end')) {
+                $object->date_end = dol_mktime($options['dateendhour'], $options['dateendmin'], 0, $options['dateendmonth'], $options['dateendday'], $options['dateendyear']);
+            }
+        }
+        if (!empty($options['label'])) {
+            if (property_exists($object, 'label')) {
+                $object->label = $options['label'];
+            }
+        }
         if (property_exists($object, 'date_creation')) {
             $object->date_creation = dol_now();
         }
