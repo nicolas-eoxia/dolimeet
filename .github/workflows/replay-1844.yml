@@ -1,0 +1,19 @@
+---
+# Banc d'essai jetable de Evarisk/Saturne#1844, sur le fork seulement : rejoue la PR dolimeet #953
+# (12/10) contre Saturne 3d6633c et sa version publiee d'alors, 23.2.1. Le job doit sortir rouge en
+# nommant fetchUserSignatory().
+name: Replay 1844
+
+on:
+    pull_request:
+
+jobs:
+    saturne-api:
+        name: Saturne
+        uses: nicolas-eoxia/Saturne/.github/workflows/published-api-reusable.yml@ci/1844-published-api-check
+        with:
+            module: dolimeet
+            saturne-ref: 3d6633c641867af5d78413fd7b573e605122bbfc
+            published-tag: '23.2.1'
+            script-repository: nicolas-eoxia/Saturne
+            script-ref: ci/1844-published-api-check
